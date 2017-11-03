@@ -1,0 +1,29 @@
+{
+  "name": "callflow-workshop",
+  "version": "1.0.0",
+  "private": true,
+  "homepage": "https://bertrandmartel.github.io/callflow-workshop",
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "gh-pages": "^1.0.0",
+    "material-ui": "^1.0.0-beta.19",
+    "material-ui-icons": "^1.0.0-beta.17",
+    "react": "^16.0.0",
+    "react-ace": "git://github.com/bertrandmartel/react-ace.git#release-callflow",
+    "react-addons-css-transition-group": "^15.6.0",
+    "react-dom": "^16.0.0",
+    "react-download-svg": "git://github.com/bertrandmartel/react-download-svg.git#release-callflow",
+    "react-resizable-component": "git://github.com/bertrandmartel/react-resizable-component.git#release-callflow",
+    "react-scripts": "1.0.16",
+    "react-sequence-diagram": "git://github.com/bertrandmartel/react-sequence-diagram.git#release-callflow"
+  },
+  "scripts": {
+    "start": "REACT_APP_VERSION=$(node -pe 'require(\"./package.json\").version') react-scripts start",
+    "build": "REACT_APP_VERSION=$(node -pe 'require(\"./package.json\").version') react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "serve": "serve -s build -p $SERVER_PORT"
+  }
+}
