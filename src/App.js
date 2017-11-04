@@ -164,7 +164,8 @@ class App extends Component {
         openInfo:false,
         openEdit:false,
         configView: 'vertical',
-        download: false
+        download: false,
+        annotations: []
     };
 
     constructor() {
@@ -184,6 +185,7 @@ class App extends Component {
         this.onEditTitle = this.onEditTitle.bind(this);
         this.onDownload = this.onDownload.bind(this);
         this.onDownloadReset = this.onDownloadReset.bind(this);
+        this.onDiagramError = this.onDiagramError.bind(this);
         this.initStorage();
     }
 
@@ -277,7 +279,8 @@ class App extends Component {
     onEditChange(value) {
       Storage.setDiagramInput(value);
       this.setState({
-        diagramInputs:value
+        diagramInputs: value,
+        annotations: []
       });
     }
 
@@ -362,6 +365,12 @@ class App extends Component {
       });
     }
 
+    onDiagramError(annotations){
+      this.setState({
+        annotations: annotations
+      });
+    }
+
     render() {
         const aceTheme = (this.state.aceTheme)?this.state.aceTheme:Constant.defaultAceTheme;
         const configView = (this.state.configView)?this.state.configView:Constant.defaultConfigView;
@@ -428,9 +437,11 @@ class App extends Component {
                           download={this.state.download}
                           type={configView}
                           aceTheme={aceTheme}
+                          annotations={this.state.annotations}
                           diagramInputs={this.state.diagramInputs}
                           diagramTheme={this.state.diagramTheme}
                           onEditChange={this.onEditChange}
+                          onError={this.onDiagramError}
                           onResize={this.onResize}
                           diagramTitle={this.state.title}
                           windowSizeOption={this.state.windowSizeOption}

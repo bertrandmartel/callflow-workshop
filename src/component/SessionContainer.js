@@ -83,13 +83,9 @@ class SessionContainer extends Component {
 
     constructor() {
         super();
-        this.state = {
-          annotations: []
-        };
         this.onEditChange = this.onEditChange.bind(this);
         this.onStopResize = this.onStopResize.bind(this);
         this.onParseError = this.onParseError.bind(this);
-        this.onDiagramRendered = this.onDiagramRendered.bind(this);
     }
 
     componentDidMount(){
@@ -115,18 +111,9 @@ class SessionContainer extends Component {
       if (this.processError){
         this.shouldUpdate = true;
         this.processError=false;
-        this.setState({
-          annotations: [error]
-        });
-      }
-    }
-
-    onDiagramRendered(){
-      if (this.processError){
-        this.processError=false;
-        this.setState({
-          annotations: []
-        });
+        if (typeof this.props.onError === 'function') {
+            this.props.onError([error]);
+        }
       }
     }
 
@@ -175,7 +162,7 @@ class SessionContainer extends Component {
                        name="editor"
                        value={this.props.diagramInputs}
                        editorProps={{$blockScrolling: true}}
-                       annotations={this.state.annotations}
+                       annotations={this.props.annotations}
                        debounceChangePeriod={100}
                        setOptions={{
                         maxLines: Infinity
