@@ -1,6 +1,6 @@
 {
   "name": "callflow-workshop",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "homepage": "https://bertrandmartel.github.io/callflow-workshop",
   "dependencies": {
@@ -15,7 +15,7 @@
     "react-download-svg": "git://github.com/bertrandmartel/react-download-svg.git#release-callflow",
     "react-resizable-component": "git://github.com/bertrandmartel/react-resizable-component.git#release-callflow",
     "react-scripts": "1.0.16",
-    "react-sequence-diagram": "git://github.com/bertrandmartel/react-sequence-diagram.git#release-callflow"
+    "react-sequence-diagram": "0.0.11"
   },
   "scripts": {
     "start": "REACT_APP_VERSION=$(node -pe 'require(\"./package.json\").version') react-scripts start",
